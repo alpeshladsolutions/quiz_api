@@ -7,6 +7,7 @@ require('dotenv').config();
 const PORT = process.env.PORT || 3300;
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
+const quizRoutes = require('./routes/quizRoutes');
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
@@ -22,9 +23,10 @@ db.once('open', () => {
 app.use(express.json());
 // OR app.use(bodyParser.json())
 
-// route register
+// register a route
 app.use('/api', authRoutes);
 app.use('/api', userRoutes)
+app.use('/api/quiz', quizRoutes)
 
 app.listen(PORT, function(){
     console.log(`Server running at ${PORT}`);
