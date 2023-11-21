@@ -31,7 +31,7 @@ exports.loginUser = async(req, res) => {
             const { password, profilePic, ...others} = user._doc;
             const token = jwt.sign({
                 id: others._id,
-                email: others.email,
+                email: others.email
             }, process.env.SECRETKEY, {expiresIn: '1d'})
             res.json({ _token: token });
         } else {
