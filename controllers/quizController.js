@@ -65,7 +65,6 @@ exports.submitQuiz = async (req, res) => {
     let resultCount = 0;
     const questionIds = questions.map(async (question) => {
       const selectedQuestion = await Quiz.find({ _id: question.question_id });
-      // console.log(selectedQuestion);
       selectedQuestion.map(async (questionObj) => {
         // console.log(questionObj.options);
         questionObj.options.map((optObj) => {
